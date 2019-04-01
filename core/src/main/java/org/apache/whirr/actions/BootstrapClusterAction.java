@@ -83,7 +83,7 @@ public class BootstrapClusterAction extends ScriptBasedClusterAction {
       throws IOException, InterruptedException {
     LOG.info("Bootstrapping cluster");
     
-    ExecutorService executorService = Executors.newCachedThreadPool();    
+    ExecutorService executorService = Executors.newFixedThreadPool(10);    
     Map<InstanceTemplate, Future<Set<? extends NodeMetadata>>> futures = Maps.newHashMap();
     
     // initialize startup processes per InstanceTemplates
